@@ -1,0 +1,27 @@
+{
+    "name": "mark-them-all",
+    "version": "0.0.1",
+    "description": "Generate static html from markdown source",
+    "keywords": ["markdown"],
+    "url": "http://github.com/simone-sanfratello/mark-them-all",
+    "author": "Simone Sanfratello <simone.sanfra@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/simone-sanfratello/mark-them-all.git"
+    },
+    "engines": {
+        "node": ">= 4.x.x"
+    },
+    "files": ["bin/main.js"],
+    "dependencies": {
+        "marked": "x",
+        "recursive-readdir": "x",
+        "fs-extra": "x",
+        "github-markdown-css": "x"
+    },
+    "bin": {
+        "markta": "./bin/main.js"
+    },    
+    "preferGlobal": true
+}
