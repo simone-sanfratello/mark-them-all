@@ -73,6 +73,7 @@ var log = function () {
     var _args = Array.prototype.slice.call(arguments);
     console.log.apply(console, _args);
 };
+
 /**
  * create or empty output dir
  * @param {function} callback
@@ -88,7 +89,7 @@ var init = function (callback) {
                     if (exists) {
                         log('json options found');
                         _options = cjson.load(_file);
-                        _ignore = ignore().addPattern(_options.ignore.split(','));
+                        _ignore = ignore({ ignore: _options.ignore.split(',') });
                     } else {
                         _options = {
                             mode: 'static'
@@ -100,19 +101,22 @@ var init = function (callback) {
         });
     });
 };
+
 /**
  * mark: copy if not md file or parse and generate it
  * @param {string} source path source file
  */
 var mark = function (source) {
-    /// apply ignore 
-    var _filename = path.basename(source);
-    if (_ignore && _ignore.filter(_filename))
-        return;
-    
     /// build target path
     var _relative = path.dirname(source).replace(_source, '');
     var _path = _output + (_relative != '' ? _relative : '');
+
+    /// check ignore and skip if needed
+    //console.log('test', _relative + '/' + path.basename(source), _ignore.filter([ _relative + '/' + path.basename(source) ]));
+    if (_ignore && _ignore.filter([ _relative + '/' + path.basename(source) ]).length < 1)
+        return;
+    //console.log('ok');
+
     fsextra.mkdirpSync(_path);
     /// check file extension
     /// if not .md, copy
@@ -178,6 +182,7 @@ var adjust = function (html, data) {
 
     return _html + html.footer;
 };
+
 /**
  * main
  */
