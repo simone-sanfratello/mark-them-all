@@ -166,15 +166,15 @@ var adjust = function (html, data) {
     /// title
     var _html = html.header.replace('$title', data.name);
     if (_options.mode == 'static') {
-        _html = _html.replace('$path', data.path);
-        /// get inner links 
+        _html = _html.replace('$path', _output);
+        /// get inner links
         _html += html.content.replace(/\href="(\.[\d\w\s\.\/\-\_]+\.md)"/img, function (match, link) {
             return 'href="' + data.path + link.substr(1).replace('.md', '.html') + '"';
         });
     } else {
         // web mode
         _html = _html.replace('$path', '');
-        /// get inner links 
+        /// get inner links
         _html += html.content.replace(/\href="(\.[\d\w\s\.\/\-\_]+\.md)"/img, function (match, link) {
             return 'href="' + link.substr(1).replace('.md', '.html') + '"';
         });
