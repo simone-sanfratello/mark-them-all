@@ -6,11 +6,10 @@
 [![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MRV4AM2CA9F78 "Donate using Paypal")
 
 
-
 ## Npm Installation
 
 Install globally prefered
-    
+
 ```
 $ npm i -g mark-them-all
 ```
@@ -18,17 +17,52 @@ $ npm i -g mark-them-all
 ## Run
 
 ```
-$ markta path/to/source path/to/out
+$ markta path/to/source path/to/output [-v]
 ```
 
-### TODO
+#### Arguments
 
-- skip dirs or file extension
-- verbose
-- render link .md -> .html
-- $out, $title
+- path/to/source: the dir with .md files
+- path/to/output : target dir: will create or replace it; also will add a css dir
+- -v enable verbose mode  
+To add options: place a .markta.json file into path/to/source
+
+### Options
+
+.markta.json example
+
+``` javascript
+{
+  "title": "My great documentation",
+  "mode": "static",
+  "ignore": ".*,.git/"
+}
+```
+
+- *title*: the title for every page, if missing will be used file name
+- *mode*: **static** or **web** (default **static**)
+    - if **static**, the link paths will be absolute to filesystem
+    - if **web**, the path link paths will be relative from output dir
+- *ignore*: use git ignore syntax, comma separated
+    - referer to [ignore](https://github.com/kaelzhang/node-ignore) for more datils
 
 
+##### Mode static or web
+
+Will be replace references to .md files in .html generated files in link
+Example
+```` markdown
+[inner link](./path/to/document.md)
+````
+
+will be in ***web*** mode
+```` html
+<a href="/path/to/document.html">inner link</a>
+````
+will be in ***static*** mode, pretending output path is /var/data/doc
+```` html
+<a href="/var/data/doc/path/to/document.html">inner link</a>
+````
 
 ## License
 
