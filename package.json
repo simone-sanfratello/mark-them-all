@@ -1,6 +1,6 @@
 {
     "name": "mark-them-all",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "description": "Generate static html from markdown source",
     "keywords": ["markdown"],
     "url": "http://github.com/simone-sanfratello/mark-them-all",
