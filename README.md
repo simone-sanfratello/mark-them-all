@@ -39,11 +39,11 @@ To add options: place a .markta.json file into path/to/source
 }
 ```
 
-- *title*: the title for every page, if missing will be used file name
-- *mode*: **static** or **web** (default **static**)
+- *title:* the title for every page, if missing will be used file name
+- *mode:* **static** or **web** (default **static**)
     - if **static**, the link paths will be absolute to filesystem
     - if **web**, the path link paths will be relative from output dir
-- *ignore*: use git ignore syntax, comma separated
+- *ignore:* use git ignore syntax, comma separated
     - referer to [ignore](https://github.com/kaelzhang/node-ignore) for more datils
 
 

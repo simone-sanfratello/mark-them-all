@@ -11,7 +11,7 @@
         "url": "git://github.com/simone-sanfratello/mark-them-all.git"
     },
     "engines": {
-        "node": ">= 4.x.x"
+        "node": "> 0.10.x"
     },
     "files": ["bin/main.js"],
     "dependencies": {
@@ -24,6 +24,6 @@
     },
     "bin": {
         "markta": "./bin/main.js"
-    },    
+    },
     "preferGlobal": true
 }
